@@ -1,22 +1,16 @@
-public class Startup
-{
-    public Startup(IConfiguration configuration)
-    {
-        Configuration = configuration;
+public class Startup {
+    public IConfiguration configRoot {
+        get;
     }
-
-    public IConfiguration Configuration { get; }
-
-    public void ConfigureServices(IServiceCollection services)
-    {
+    public Startup(IConfiguration configuration) {
+        configRoot = configuration;
+    }
+    public void ConfigureServices(IServiceCollection services) {
         services.AddRazorPages();
         services.AddControllers();
     }
-
-    public void Configure(WebApplication app, IWebHostEnvironment env)
-    {
-        if (!app.Environment.IsDevelopment())
-        {
+    public void Configure(WebApplication app, IWebHostEnvironment env) {
+        if (!app.Environment.IsDevelopment()) {
             app.UseExceptionHandler("/Error");
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
@@ -24,6 +18,13 @@ public class Startup
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+        // app.UseEndpoints(async endpoints =>
+        // {
+        //   endpoints.MapGet("/", async context =>
+        //   {
+        //     await context.Response.WriteAsync("Hello World!");
+        //   });
+
         app.UseEndpoints(endpoints =>
         {
           endpoints.MapControllers();

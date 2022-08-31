@@ -6,10 +6,11 @@ project.lock.json
 
 # Visual Studio Code
 .VS Code
+
 # User-specific files 
 *.suo 
 *.user
-*.userosscache 
+*.userosscache
 *.sln.docstates
 
 # Build results 
